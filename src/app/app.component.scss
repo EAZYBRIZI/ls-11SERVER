@@ -1,0 +1,127 @@
+@use 'scss/theme/colors';
+@use 'scss/theme/typography';
+
+.mat-sidenav-container {
+    height: 100%;
+    color: inherit;
+    background-color: colors.on-primary();
+    width: 100%;
+
+    .mat-sidenav {
+        width: 360px;
+        background-color: colors.surface();
+        color: colors.on-surface-variant();
+        padding: 0px 12px;
+        
+        @include typography.label-large;
+
+        @media screen and (max-width: 1299px) {
+            width: 80px;
+            padding: 0px 11px;
+
+            @include typography.label-medium;
+        };
+
+        @media screen and (max-width: 599px) {
+            padding: 0px 12px;
+
+            @include typography.label-small;
+        };
+    }
+
+    .mat-mdc-list-item {
+        height: 56px !important;
+        padding-inline: 16px 24px;
+        border-radius: 28px;
+        
+        @media screen and (max-width: 1299px){
+            display: flex;
+            flex-direction: column;
+
+            padding-inline: 0px;
+            border-radius: 16px;
+            margin-bottom: 12px;
+            padding-top: 4px;
+        }
+
+        .mat-mdc-list-item-icon {
+            margin: 0 12px 0px 0px;
+            padding: 0;
+            color: colors.on-secondary-container();
+
+            @media screen and (max-width: 1299px) {
+                margin: 0px;
+                padding-bottom: 4px;
+            }
+        }
+
+        .mat-mdc-list-item-title {
+            color: colors.on-surface-variant(); 
+        }
+
+        &.mat-mdc-list-item-active {
+            background-color: colors.secondary-container();
+            --symbol-fill: 1;
+
+            @media screen and (max-width: 1299px) {
+                background-color: colors.surface();
+            }
+
+            @media screen and (max-width: 1299px) {
+                .mat-icon {
+                    border-radius: 16px;
+                    padding: 2px 16px;
+                    background-color: colors.secondary-container();
+                }
+            }
+        }
+
+        &.mat-mdc-list-item-interactive:before {
+            background-color: currentColor;
+        }
+
+        &.mat-mdc-list-item-interactive:not(:focus):not(.mdc-list-item--disabled):hover::before {
+            opacity: .08;
+          }
+    }
+
+    .mat-sidenav-content {
+        margin: 0px 0px 0px 16px;
+        width: calc(100vw - 16px);
+
+        @media screen and (max-width: 599px) {
+            margin: 0px 8px 0px 8px;
+            width: calc(100vw - 16px);
+        }
+
+        .mat-toolbar-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .title {
+                color: colors.on-secondary-container();
+                text-align: center;
+
+                @media screen and (max-width: 599px) {
+                    @include typography.title-small();
+                }
+                .mat-icon {
+                    color: colors.on-secondary-container();
+                }
+            }
+
+            .authReg {
+                display: flex;
+                align-items: center;
+
+                width: 64px;
+                height: 48px;
+
+                .mdc-button {
+                    color: colors.on-secondary-container();
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,23 @@
+<div class="dialogAdd">
+  <h1 mat-dialog-title>{{ selectedMode }} книгу</h1>
+
+  <div mat-dialog-content>
+    <form [formGroup]="bookForm">
+      <div>
+        <mat-form-field>
+          <mat-label>Фамилия и имя автора</mat-label>
+          <input matInput type="text" formControlName="author">
+        </mat-form-field>
+      </div>
+      <mat-form-field>
+        <mat-label>Название</mat-label>
+        <input matInput type="text" formControlName="name">
+      </mat-form-field>
+    </form>
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onCancelClick()">Отмена</button>
+    <button mat-button (click)="onAddClick()" [disabled]="bookForm.invalid">{{ selectedMode }}</button>
+  </div>
+</div>

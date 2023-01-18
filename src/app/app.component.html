@@ -1,0 +1,49 @@
+<mat-sidenav-container >
+  <mat-sidenav >
+    <mat-nav-list (opened)="authService.isAuthorized" (click)="sidenav.toggle()" >
+      <a mat-list-item routerLink="securePage" routerLinkActive="mat-mdc-list-item-active" [routerLinkActiveOptions]="{exact: true}">
+        <mat-icon matListItemIcon> add</mat-icon>
+        <div matListItemTitle>secure</div>
+      </a>
+
+      <a mat-list-item routerLink="books" routerLinkActive="mat-mdc-list-item-active" [routerLinkActiveOptions]="{exact: true}">
+        <mat-icon matListItemIcon> menu_book</mat-icon>
+        <div matListItemTitle>Книги</div>
+      </a>
+
+      <a mat-list-item routerLink="main" routerLinkActive="mat-mdc-list-item-active" [routerLinkActiveOptions]="{exact: true}">
+        <mat-icon matListItemIcon> home</mat-icon>
+        <div matListItemTitle>Главная</div>
+      </a>
+
+      <a mat-list-item routerLink="news" routerLinkActive="mat-mdc-list-item-active" [routerLinkActiveOptions]="{exact: true}">
+        <mat-icon matListItemIcon> feed</mat-icon>
+        <div matListItemTitle>Новости</div>
+      </a>
+
+      <!-- <a mat-list-item routerLink="contacts" routerLinkActive="mat-mdc-list-item-active" [routerLinkActiveOptions]="{exact: true}">
+        <mat-icon matListItemIcon> contacts</mat-icon>
+        <div matListItemTitle>Контакты</div>
+      </a> -->
+
+    </mat-nav-list> 
+  </mat-sidenav>
+  <mat-sidenav-content>
+
+    <mat-toolbar-row >
+      <div class="title">
+        <button mat-button (click)="sidenav.toggle()" [disabled]="!authService.isAuthorized">
+          <mat-icon matListItemIcon > menu</mat-icon>
+        </button>
+      </div>
+      <div class="title" [hidden]="!authService.isAuthorized"> Добро пожаловать, {{authService.userName}}</div>
+      <div class="authReg" >
+        <button mat-button (click)="authService.logout()" [hidden]="!authService.isAuthorized">Выход</button>
+      </div>
+      
+    </mat-toolbar-row>
+
+    <mat-divider></mat-divider>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

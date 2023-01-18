@@ -1,0 +1,14 @@
+@use '../../scss/theme/colors';
+@use '../../scss/theme/typography';
+
+h1 {
+    padding: 16px;
+    text-align: center;
+
+    color: colors.on-surface();
+    @include typography.headline-medium();
+
+    @media screen and (max-width: 599px) {
+        @include typography.headline-small();
+    }
+}

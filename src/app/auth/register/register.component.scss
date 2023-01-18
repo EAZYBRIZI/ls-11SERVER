@@ -1,0 +1,37 @@
+@use '../../scss/theme/colors';
+@use '../../scss/theme/typography';
+
+
+:host {
+    height: calc(100vh - 65px);
+    display: flex;
+    place-items: center;
+    justify-content: center;
+}
+
+.container,
+form {
+  display: flex;
+  flex-direction: column;
+
+  #login {
+    background-color: colors.surface();
+    color: colors.primary();
+    height: 40px !important;
+    border-radius: 20px;
+    margin: 15px 0px 10px 0px;
+    padding: 0px 24px;
+
+    @include typography.label-large; 
+  }
+
+  #register {
+    color: colors.primary();
+    height: 40px !important;
+    border-radius: 20px;
+
+    text-decoration: none;
+
+    @include typography.label-large; 
+  }
+}

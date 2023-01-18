@@ -1,0 +1,21 @@
+<div class="booksComponent">
+  <h1 id="title">Ваши книги</h1>
+  <div class="butttonMedia">
+    <button id="button" mat-raised-button (click)="addBook()">Добавить книгу</button>
+    <button id="button" mat-raised-button (click)="generateBooks()">Новые книги</button>
+    <button id="button" mat-raised-button (click)="deleteBooks()">Удалить книги</button>
+  </div>
+
+
+  <div class="list" *ngFor="let book of books">
+    <div class="book">
+    <span>{{ book.name }}</span> 
+    <p>{{ book.author }}</p>
+    </div>
+    <div class="button">
+      <button mat-icon-button (click)="editBook(book)">
+        <mat-icon matListItemIcon>edit</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

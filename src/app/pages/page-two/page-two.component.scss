@@ -1,0 +1,106 @@
+@use '../../scss/theme/colors';
+@use '../../scss/theme/typography';
+
+a {
+    text-decoration: none;
+}
+
+.newsPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    h1 {
+        color: colors.on-surface();
+        @include typography.headline-medium();
+
+        @media screen and (max-width: 599px) {
+            @include typography.headline-small();
+        }
+    }
+    
+    .list {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    
+        width: 560px;
+        height: 56px;
+        padding: 8px 0px 8px 0px;
+        margin: 8px 0px;
+    
+        border-radius: 8px;
+    
+        overflow: hidden;
+        white-space: wrap;
+        text-overflow: ellipsis;
+    
+        background-color: colors.surface();
+    
+        position: relative;
+        isolation: isolate;
+    
+        &:before {
+            content: '';
+            position: absolute;
+            border-radius: 8px;
+            inset: 0;
+            opacity: var(--state-layer-opacity, 0);
+            background-color: colors.on-surface();
+            z-index: -1;
+        }
+    
+        &:hover {
+            --state-layer-opacity: .08;
+        }
+    
+        @media screen and (max-width: 1299px) {
+            
+            width: 495px;
+        };
+    
+        @media screen and (max-width: 599px) {
+            width: 100%;
+        };
+    
+        .news {
+            display: flex;
+            flex-direction: column;
+            padding-left: 16px;
+            padding-top: 16px;
+            width: 100%;
+            
+            span {
+                color: colors.on-surface-variant();
+    
+                @include typography.body-medium;
+    
+                @media screen and (max-width: 1299px) {
+                    @include typography.body-small;
+                };
+    
+                @media screen and (max-width: 599px) {
+                    max-height: 30px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+    
+            p {
+                color: colors.on-surface();
+                
+    
+                @include typography.body-large;
+    
+                @media screen and (max-width: 1299px) {
+                    @include typography.body-medium;
+                };
+    
+                @media screen and (max-width: 599px) {
+                    @include typography.body-small;
+                };
+            }
+        }
+    }
+}

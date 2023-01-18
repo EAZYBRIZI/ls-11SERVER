@@ -28,8 +28,8 @@ export class BookService {
     return this.httpClient.post(environment.apiUrl + 'books', JSON.stringify(book));
   }
 
-  public editBook(book: IBook): Observable<any> {
-    return this.httpClient.put(environment.apiUrl + 'books', JSON.stringify(book));
+  public editBook(id: string,book: IBook): Observable<any> {
+    return this.httpClient.put(environment.apiUrl + 'books/' + id, JSON.stringify(book));
   }
 
   public generateBooks(count: number): Observable<any> {

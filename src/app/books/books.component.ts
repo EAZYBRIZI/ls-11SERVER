@@ -54,13 +54,15 @@ export class BooksComponent implements OnInit {
   public editBook(book: IBook) {
     const dialogRef = this.dialog.open(AddBookDialogComponent, {
       data: book,
+
       
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.bookService.editBook(result).subscribe();
+        this.bookService.editBook(book.id , result).subscribe();
         this.loadBooks();
+
       }
     });
   }
